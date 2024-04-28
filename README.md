@@ -1,5 +1,5 @@
 # Cat finder API
-
+__*TEST*__ - shows an example of using a REST API request to the server, asking for information about collections of invalid clients and a weather request.
 
 ## How to Use the Repository
 
