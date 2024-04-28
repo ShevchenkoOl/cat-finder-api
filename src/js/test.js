@@ -55,8 +55,9 @@ const onSearch = evt => {
   if(!query){    //обробка пустого рядка
     return alert('add value')
   }
-  weatherApi(query, days).then(data =>
-    list.innerHTML = creatMakeUp(data.forecast.forecastday)
+  weatherApi(query, days)
+  .then(data => list.innerHTML = creatMakeUp(data.forecast.forecastday)
+  .catch(err => console.log(err)) //обробка помилки
   );
   //console.log(data.forecast.forecastday));
 };
