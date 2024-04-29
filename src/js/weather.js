@@ -9,36 +9,6 @@
 // const fetchUsersBtn = document.querySelector(".btn");
 // const userList = document.querySelector(".user-list");
 
-// fetchUsersBtn.addEventListener("click", () => {
-//   fetchUsers()
-//     .then((users) => renderUsers(users))
-//     .catch((error) => console.log(error));
-// });
-
-// function fetchUsers() {
-//   return fetch("https://jsonplaceholder.typicode.com/users")
-//   .then((response) => {
-//       if (!response.ok) {
-//         throw new Error(response.status);
-//       }
-//       return response.json();
-//     }
-//   );
-// }
-
-// function renderUsers(users) {
-//   const markup = users
-//     .map((user) => {
-//       return `<li>
-//           <p><b>Name</b>: ${user.name}</p>
-//           <p><b>Email</b>: ${user.email}</p>
-//           <p><b>Company</b>: ${user.company.name}</p>
-//         </li>`;
-//     })
-//     .join("");
-//   userList.insertAdjacentHTML("beforeend", markup);
-// }
-
 // Weather
 //Алгоритм: 1- створюємо запрос на сервер тобто функція weatherApi; 2 - створюємо функцію обробника події onSearch; 3 - створюємо нашу нову розмітку creatMakeUp
 const form = document.querySelector('.js-weather');
@@ -55,10 +25,14 @@ const onSearch = evt => {
   if(!query){    //обробка пустого рядка
     return alert('add value')
   }
-  weatherApi(query, days)
-  .then(data => list.innerHTML = creatMakeUp(data.forecast.forecastday)
-  .catch(err => console.log(err)) //обробка помилки
-  );
+  try {
+    weatherApi(query, days)
+      .then(data => list.innerHTML = creatMakeUp(data.forecast.forecastday))
+      .catch(err => list.innerHTML = createErrorMarkup()); // Обробка помилки
+  } catch (error) {
+    console.error('Помилка при виклику API:', error);
+    list.innerHTML = createErrorMarkup();
+  }
   //console.log(data.forecast.forecastday));
 };
 
@@ -100,3 +74,9 @@ const creatMakeUp = arr => {
     )
     .join('')
 };
+
+function createErrorMarkup(){
+  return `<li><img src="https://www.shutterstock.com/image-vector/web-banner-error-400-bad-260nw-1157766460.jpg" alt="Bad request"></li>`
+}
+
+
