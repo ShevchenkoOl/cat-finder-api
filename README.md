@@ -1,5 +1,10 @@
 # Cat finder API
-__*TEST*__ - an example of using the REST API for a request to the server, a request for information about collections of fake users, and a weather request is shown..
+This repository was created for practice using the API.
+It includes several projects using public APIs, for example:
+__- weather forecast__ - where you can enter a city and find out the weather forecast for the coming days;
+__- Star Wars__ - you can find out information about Star Wars films, actors and planets;
+__- Request a list of non-existent clients__. 
+
 
 ## How to Use the Repository
 
