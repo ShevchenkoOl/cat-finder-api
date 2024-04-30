@@ -1,9 +1,11 @@
 # Cat finder API
 This repository was created for practice using the API.
+The main project created using the **Parcel** project builder, as well as using the **slimselectjs**, **cssloaders** and **Notiflix** libraries
 It includes several projects using public APIs, for example:
-1. __weather forecast__ - where you can enter a city and find out the weather forecast for the coming days;
+1. __Weather forecast__ - where you can enter a city and find out the weather forecast for the coming days;
 2. __Star Wars__ - you can find out information about Star Wars films, actors and planets;
-3. __Request a list of non-existent clients__. 
+3. __Request a list of non-existent clients__;
+4. __Cat search__ - applications for searching information about a cat by its breed.
 
 
 ## How to Use the Repository
