@@ -1,9 +1,9 @@
 # Cat finder API
 This repository was created for practice using the API.
 It includes several projects using public APIs, for example:
-__- weather forecast__ - where you can enter a city and find out the weather forecast for the coming days;
-__- Star Wars__ - you can find out information about Star Wars films, actors and planets;
-__- Request a list of non-existent clients__. 
+1. __weather forecast__ - where you can enter a city and find out the weather forecast for the coming days;
+2. __Star Wars__ - you can find out information about Star Wars films, actors and planets;
+3. __Request a list of non-existent clients__. 
 
 
 ## How to Use the Repository
