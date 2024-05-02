@@ -31,3 +31,16 @@
   .user-list li:not(:last-child) {
     margin-bottom: 16px;
   }
+
+  ul {
+    list-style: none;
+}
+
+
+
+li {
+    border: 1px solid red;
+    margin-top: 20px;
+    width: 270px;
+    padding: 20px;
+}
