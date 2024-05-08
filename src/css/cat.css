@@ -1,0 +1,36 @@
+body {
+    background-color: rgb(199, 253, 253);
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*height: 100vh; /* Растянуть контейнер на всю высоту экрана */
+  }
+  
+  .typed {
+    font-size: 35px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+  
+  .breed-select {
+    width: 100%; /*Ширина селектора */
+    padding: 10px; /* Внутренний отступ */
+    margin-bottom: 20px; /* Отступ снизу */
+  }
+  
+  .loader, .error {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px; /* Отступ снизу */
+  }
+  
+  .invisible{
+    display: none;
+  }
+  /* .detail {
+    /* Дополнительные стили для деталей, если это необходимо 
+  } */
+  

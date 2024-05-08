@@ -1,67 +1,60 @@
-//import axios from "axios";
-
+import SlimSelect from 'slim-select'
+import 'slim-select/dist/slimselect.css';
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 
-const input = document.querySelector('.input');
-const detailElement = document.querySelector('.detail');
-
-
-fetchBreeds().then(data => {
-  creatMakeup(data);
-});
-
-
-const creatMakeup = arr => {
-  const markUp = `<form>
-        <select id="electElement">
-                ${arr
-                  .map(
-                    ({ id, name }) => `<option value="${id}">${name}</option>`
-                  )
-                  .join('')}
-        </select>
-    </form>`;
-  input.insertAdjacentHTML('beforeend', markUp);
+const elements = {
+  select: document.querySelector('.breed-select'),
+  loader: document.querySelector('.loader'),
+  error: document.querySelector('.error'),
+  detail: document.querySelector('.detail'),
 };
 
-input.addEventListener('change', e => {
+elements.error.classList.add('invisible');
+
+const fetchList = () => {
+fetchBreeds()
+.then(data => {
+  const markUp = data.map(({ id, name }) => { 
+    return `<option value="${id}">${name}</option>`
+  }).join('');
+    elements.select.insertAdjacentHTML('beforeend', markUp);
+    new SlimSelect({
+      select: elements.select,
+    })
+})
+
+}
+fetchList();
+
+elements.select.addEventListener('change', e => {
   e.preventDefault();
   let breedId = e.target.value;
-
-  fetchCatByBreed(breedId).then(catData => {
+  elements.loader.classList.add('invisible');
+  fetchCatByBreed(breedId)
+  .then(catData => {
     creatDetailMakeup(catData, breedId);
   });
 });
 
-// const showLoadingMessage = () => {
-//   detailElement.innerHTML = 'Loading data, please wait...';
-// };
-
-// // Функция для скрытия сообщения о загрузке данных
-// const hideLoadingMessage = () => {
-//   detailElement.innerHTML = ''; // Очищаем содержимое detail
-// };
-
-export const creatDetailMakeup = (arr, breedIdParam) => {
-// showLoadingMessage();
-  if (!arr || arr.length === 0) {
-    console.error('Array is empty or undefined');
-    //hideLoadingMessage();
-    return;
-  }
-  const breed = arr.find(cat => cat.breeds && cat.breeds.find(breed => breed.id === breedIdParam));
-  //const breed = arr[0].breeds.find(breed => breed.id === breedIdParam);
-  if (!breed) {
-    console.error('Breed not found');
-    //hideLoadingMessage();
-    return;
-  }
-  const {name, description, temperament} = breed.breeds.find(breed => breed.id === breedIdParam);  //const {name, description, temperament} = breed;
-  const markUp =
-  `<h2>${name}</h2>
-       <img src="${breed.url}" alt="${name}" width="400" height="390"/>
-       <p><h3>Description:</h3> ${description}</p>
-       <p><h3>Temperament:</h3> ${temperament}</p>`;
-  detailElement.innerHTML = markUp;
-  //hideLoadingMessage();
+export const creatDetailMakeup = (breedIdParam) => {
+  let selectedBreed;
+  fetchBreeds()
+    .then(data => {
+      selectedBreed = data.find(breed => breed.id === breedIdParam);
+      return fetchCatByBreed(breedIdParam);
+    })
+    .then(catInfo => {
+      const catData = catInfo[0];
+      const { name, description, temperament } = catData.breeds.find(breed => breed.id === breedIdParam);
+      const markUp =
+        `<h2>${name}</h2>
+        <img src="${catData.url}" alt="${name}" width="400" height="390"/>
+        <p><h3>Description:</h3> ${description}</p>
+        <p><h3>Temperament:</h3> ${temperament}</p>`;
+      elements.detail.innerHTML = markUp;
+    })
+    .catch(error => {
+      console.error('Error fetching cat data:', error);
+      elements.error.classList.remove('invisible');
+    });
 };
