@@ -11,7 +11,7 @@ It includes several projects using public APIs, for example:
 
 ## How to Use the Repository
 
-1. Clone the repository: `git clone https://github.com/ShevchenkoOl/cat-finder-api.git`
+1. Clone the repository: `git clone https://github.com/ShevchenkoOl/using-api.git`
 
 2. Navigate to the relevant section to explore the corresponding material.
 
