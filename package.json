@@ -1,21 +1,21 @@
 {
-  "name": "cat-finder-api",
+  "name": "using-api",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://shevchenkool.github.io/cat-finder-api/",
+  "homepage": "https://shevchenkool.github.io/using-api/",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /cat-finder-api/"
+    "build": "parcel build src/*.html --public-url /using-api/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ShevchenkoOl/cat-finder-api.git"
+    "url": "git+https://github.com/ShevchenkoOl/using-api.git"
   },
   "keywords": [],
   "author": "OLeksii Shevchenko <uzlabini@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ShevchenkoOl/cat-finder-api.git/issues"
+    "url": "https://github.com/ShevchenkoOl/using-api.git/issues"
   },
   "dependencies": {
     "axios": "^1.6.8",
